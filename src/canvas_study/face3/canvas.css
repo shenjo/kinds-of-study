@@ -1,3 +1,3 @@
-#canvas,#rotateTest{
+#canvas,#rotateTest,#scaleTest,#transformTest,#clipTest,#sunEarthMoonTest{
     border: 1px solid black;
 }
