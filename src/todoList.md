@@ -20,3 +20,5 @@
 9. chrome/firefox profile e.g. console.profile
     http://yslow.org
 10. APM https://newrelic.com
+
+11. my fdel 
