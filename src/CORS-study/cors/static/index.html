@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cors demo</title>
+</head>
+<body>
+<div>Response is <div id="response"></div></div>
+<button onclick="send()">send Request</button>
+<script>
+    function send(){
+        const desDiv = document.getElementById('response')
+        const xhr = new XMLHttpRequest();
+        const URL = 'http://localhost:3001'
+        xhr.open('GET',URL);
+        xhr.send(null);
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {  // 如果请求成功
+                desDiv.innerHTML = xhr.response;
+            }
+        }
+    }
+</script>
+</body>
+</html>
