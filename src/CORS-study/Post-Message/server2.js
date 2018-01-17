@@ -1,8 +1,8 @@
 const express = require('express'),
     app = express(),
-    listenPort = 3000;
+    listenPort = 3002;
 
-app.use(express.static(__dirname+'/static'));
+app.use(express.static(__dirname+'/static2'));
 
 
 app.listen(listenPort, function () {

@@ -1,6 +1,6 @@
 const express = require('express'),
     app = express(),
-    listenPort = 3001;
+    listenPort = 3002;
 
 app.route('/')
     .get((req,res)=>{
@@ -11,6 +11,13 @@ app.route('/')
         // res.set('Access-Control-Allow-Origin', 'http://localhost:3003');
         res.send("post Hello world!");
     });
+
+app.route('/jsonp')
+    .get((req,res)=>{
+        const callbackName = req.query.callback;
+        res.send(callbackName+"({'message': 'hello world from JSONP!'});");
+        // res.send(`${callbackName}({'message': 'hello world from JSONP!'});`);
+    })
 
 
 

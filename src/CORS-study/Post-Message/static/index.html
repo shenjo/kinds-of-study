@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page1</title>
+</head>
+<body>
+  <h1>this is page 1</h1>
+
+  <iframe id="iframe" src="http://localhost:3002"></iframe>
+  <script>
+      let otherWin = window.open('http://localhost:3001/another.html','newWin')
+      let iframe = document.getElementById('iframe').contentWindow;
+      setTimeout(()=>{
+          console.log('post message to other window');
+          otherWin.postMessage({greeting:'hello'},'http://localhost:3001');
+          iframe.postMessage({username:'joey'},'http://localhost:3002');
+      },3000);
+
+      function receiveMessage(event) {
+          // let allowList = ['http://localhost:3001','http://localhost:3002']
+          console.log(event.data);
+      }
+      window.addEventListener('message', receiveMessage, false);
+
+  </script>
+</body>
+</html>

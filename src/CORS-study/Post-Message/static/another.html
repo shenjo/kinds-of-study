@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>this is page1 -- another page</h1>
+<div id="test"></div>
+<script>
+
+    function receiveMessage(event) {
+        let source = event.source;
+        if(event.origin !== 'http://localhost:3001'){
+            return false;
+        }
+        source.postMessage({success:'from 3001'},'http://localhost:3001')
+        document.getElementById('test').innerHTML = event.data.greeting;
+    }
+    window.addEventListener('message', receiveMessage, false);
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page2</title>
+</head>
+<body>
+<h1>this is page 2</h1>
+<div>User:<div id="test"></div></div>
+
+<script>
+    function receiveMessage(event) {
+        let allowOrigin = 'http://localhost:3001';
+        if(event.origin !== allowOrigin){
+            return false;
+        }
+        document.getElementById('test').innerHTML = event.data.username
+        event.source.postMessage({success:'from 3002'},allowOrigin);
+    }
+    window.addEventListener('message', receiveMessage, false);
+</script>
+</body>
+</html>

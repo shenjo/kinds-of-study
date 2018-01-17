@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cors demo</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<div>Response is
+    <div id="response"></div>
+</div>
+<button onclick="sendXmlHttpRequest()">send Request(xmlHttpRequest)</button>
+<button onclick="sendAxios()">send Request(axios)</button>
+<button onclick="sendJSONP()">send Request(JSONP)</button>
+
+
+
+<script>
+    const BASE_URL = 'http://localhost:3002'
+
+    const desDiv = document.getElementById('response')
+
+    function sendXmlHttpRequest() {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', BASE_URL);
+        xhr.send(null);
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {  // 如果请求成功
+                desDiv.innerHTML = xhr.response;
+            }
+        }
+    }
+
+    function sendAxios() {
+            axios.get(BASE_URL).then((res)=>{
+                desDiv.innerHTML = res.data;
+            }).catch(err=>{
+                desDiv.innerHTML = err.message
+            })
+    }
+
+    const callback = (data)=>{
+        desDiv.innerHTML = data.message;
+    }
+
+
+    function sendJSONP(){
+        let scriptEle =  document.createElement('script');
+        scriptEle.src = `${BASE_URL}/jsonp?callback=callback`;
+        document.body.appendChild(scriptEle);
+    }
+    console.log(document.cookie)
+</script>
+</body>
+</html>
