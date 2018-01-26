@@ -22,3 +22,11 @@
 10. APM https://newrelic.com
 
 11. my fdel 
+
+12. my CO
+
+
+13. ECMAScript Observable
+
+14. [git 使用](http://blog.csdn.net/dengsilinming/article/details/8000622)
+
