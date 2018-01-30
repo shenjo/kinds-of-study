@@ -1,5 +1,7 @@
 ### 组合
 
+[example](./Chapter5.js)
+
 ```ecmascript 6
 // 顺序重要的的例子
 const compose = (f,g)=> (x)=> f(g(x))
@@ -33,25 +35,17 @@ lastUpper(['abc','def','ghi','jkl'])
 
 ```
 
+组合的概念直接来自于数学课本。
+
+```ecmascript 6
+// 结合律（associativity）
+compose(f, compose(g, h)) == compose(compose(f, g), h);
+// true
+```
+
 
 ```ecmascript 6
 // /可变的组合（variadic compose）
-
-const compose = (...fns) => {
-    const _length = fns.length;
-    return (...args) => {
-        let next_args = null;
-        for(let i =_length;--i>=0;){
-            const fn = fns[i];
-            let fnArg = next_args ? next_args : args
-            let currentArgs = fn.length ? fnArg.slice(0, fn.length) : fnArg;
-            next_args = args.slice(fn.length || 1);
-            let result = fn.call(null,...currentArgs);
-            next_args.unshift(result);
-        }
-        return next_args[0];
-    }
-};
 
 const toUpperCase = (str) => str.toUpperCase();
 

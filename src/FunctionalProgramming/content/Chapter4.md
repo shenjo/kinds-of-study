@@ -14,23 +14,46 @@ const addTen = add(10)
 ```
 
 
-##### 创建curry函数感受下:
+##### 创建curry函数感受下: [example](./Chapter4.js)
 
 ```ecmascript 6
-import {curry} from 'lodash'
 
-const O_Math = (what,str) => str.match(what)
-// O_Math('abc','xxxabcxxx')
+const match = curry((what, str) => {
+    return str.match(what);
+});
 
-const C_isMath = curry(O_Math)
- // let isMatchABC = C_isMath('abc')
- // isMatchABC('xxxxabcxxxx')
+const replace = curry((what, replacement, str) => {
+    return str.replace(what, replacement);
+});
 
-const O_map = (f,arr)=> arr.map(f)
+const filter = curry((f,arr)=>{
+    return arr.filter(f);
+});
 
-const C_map = curry(O_map)
+const map = curry((f,arr)=>{
+    return arr.map(f);
+});
 
 ```
+
+##### 考虑需求，得要html 某个element的所有子节点
+
+```ecmascript 6
+const getChildren = (x) =>{
+  return x.childNodes;
+};
+
+const allTheChildren = map(getChildren);
+
+allTheChildren([ele1,ele2,ele3])
+
+const _allTheChildren = (elements)=> {
+  return _.map(elements, getChildren);
+};
+
+```
+
+
 
 
 
