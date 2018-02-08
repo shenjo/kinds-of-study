@@ -1,6 +1,6 @@
 # Guide to store session in Redis
 
-##1. Prepare
+## 1. Prepare
 
 [官网](http://redis.io)
 
@@ -10,16 +10,16 @@
 
 Redis client 下载解压缩就行
 
-##2. 启动Redis
+## 2. 启动Redis
 
-##3. 启动应用
+## 3. 启动应用
 
 安装依赖包
 ```bash 
 $ node server
 ```
 
-##4. 访问localhost:3000
+## 4. 访问localhost:3000
 
 ![home](./assets/img/site.png)
 
