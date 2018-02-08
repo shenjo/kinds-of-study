@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cors demo</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<div>Response is
+    <div id="response"></div>
+</div>
+<button onclick="getFruit()">send Request(axios)</button>
+
+
+
+<script>
+    function getFruit() {
+            axios.get('/api/fruits').then((res)=>{
+                desDiv.innerHTML = res.data;
+            }).catch(err=>{
+                desDiv.innerHTML = err.message
+            })
+    }
+
+</script>
+</body>
+</html>
